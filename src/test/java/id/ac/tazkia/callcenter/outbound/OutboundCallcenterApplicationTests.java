@@ -1,4 +1,4 @@
-package id.ac.tazkia.callcenter.outboundcallcenter;
+package id.ac.tazkia.callcenter.outbound;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
