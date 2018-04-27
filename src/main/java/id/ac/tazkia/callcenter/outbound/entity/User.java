@@ -22,4 +22,10 @@ public class User {
 
     @NotNull @NotEmpty
     private String fullname;
+
+    private Boolean active;
+
+    @NotNull
+    @ManyToOne @JoinColumn(name = "id_role")
+    private Role role;
 }

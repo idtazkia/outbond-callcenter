@@ -11,7 +11,10 @@
     <title>outbound-callcenter</title>
 
     <!-- Bootstrap core CSS -->
+    <!-- iCheck for checkboxes and radio inputs -->
     <link th:href="@{/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/dist/css/select2.min.css}" rel="stylesheet" />
+
     <!-- Custom styles for this template -->
     <link href="/navbar-top-fixed.css" rel="stylesheet">
     <link href="/offcanvas.css" rel="stylesheet">
@@ -27,19 +30,25 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link"th:href="@{/user/list}">User</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/dataprospek/list}">Data Prospek</a>
+                <a class="nav-link" th:href="@{/institution/list}">Institution</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" th:href="@{/datacampaign/list}">Data Campaign</a>
+                <a class="nav-link" th:href="@{/prospect/list}">Prospect</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Sesi Telepon</a>
+                <a class="nav-link" th:href="@{/campaign/list}">Campaign</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Laporan</a>
+                <a class="nav-link" th:href="@{/asign/list}">Asign</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Sesi Telepon</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Laporan</a>
             </li>
         </ul>
     </div>
@@ -58,5 +67,9 @@
 <script src="/assets/js/vendor/popper.min.js"></script>
 <script src="/dist/js/bootstrap.min.js"></script>
 <script src="/offcanvas.js"></script>
+<script th:src="@{/dist/js/select2.min.js}"></script>
+
+<!-- bootstrap color picker -->
+
 </body>
 </html>
