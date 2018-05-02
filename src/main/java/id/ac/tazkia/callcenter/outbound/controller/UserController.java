@@ -12,6 +12,7 @@ import id.ac.tazkia.callcenter.outbound.entity.UserPassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -34,6 +35,9 @@ public class UserController {
 
     @Autowired
     private UserPasswordDao userPasswordDao;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     @GetMapping("/user/list")
@@ -60,7 +64,7 @@ public class UserController {
                 UserInputDto userInputDto = new UserInputDto();
                 userInputDto.setUserPassword(userPassword);
                 userInputDto.setUser(user);
-                userInputDto.setPassword(userPassword.getPassword());
+                userInputDto.setPassword(passwordEncoder.encode(userPassword.getPassword()));
                 userInputDto.setIdUser(user.getId());
                 userInputDto.setUsername(user.getUsername());
                 userInputDto.setEmail(user.getEmail());
@@ -98,10 +102,8 @@ public class UserController {
             userPassword.setId(uid.getUserPassword().getId());
         }
         userDao.save(user);
+        userPassword.setPassword(passwordEncoder.encode(uid.getPassword()));
         userPasswordDao.save(userPassword);
-
-
-
         return "redirect:/user/list";
     }
 

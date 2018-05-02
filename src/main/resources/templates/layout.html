@@ -48,7 +48,13 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
             <li class="nav-item" sec:authorize="hasAuthority('CONFIGURE_SYSTEM')">
                 <a class="nav-link" th:href="@{/report/list}">Report</a>
             </li>
+
+
+
         </ul>
+        <form class="form-inline my-2 my-lg-0" name="f" th:action="@{/logout}" method="post">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign Out</button>
+        </form>
     </div>
 
 </nav>
