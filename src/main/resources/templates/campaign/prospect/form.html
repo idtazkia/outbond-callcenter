@@ -10,33 +10,44 @@
 <section layout:fragment="main" class="container">
 
     <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h5 class="border-bottom border-gray pb-2 mb-0">Campaign Member</h5>
+
+
+
+        <div class="media text-muted pt-3">
 
         <div class="form-group">
             <label >Campign : </label>
             <label th:text="*{campaign.name}">-</label>
         </div>
+            &nbsp;&nbsp;
         <div class="form-group">
             <label >Description : </label>
             <label th:text="*{campaign.description}">-</label>
         </div>
+            &nbsp;&nbsp;
         <div class="form-group">
             <label >Start Date : </label>
             <label th:text="*{campaign.startDate}">-</label>
         </div>
+            &nbsp;&nbsp;
         <div class="form-group">
             <label >End Date : </label>
             <label th:text="*{campaign.endDate}">-</label>
         </div>
 
 
+
+
+        </div>
+
         <table width="100%">
             <tr>
                 <td align="right">
                     <form method="get">
                         <div class="input-group input-group-sm" style="width: 100%;">
-                            <input type="hidden" name="campaign" th:value="${campaign.id}">
-                            <input type="text" class="form-control" name="value" id="exampleFormControlInput1" placeholder="Pencarian Berdasarkan Sekolah"  th:if="${key} == null"/>
-                            <input type="text" class="form-control" name="value" id="exampleFormControlInput1" placeholder="Pencarian Berdasarkan Sekolah"  th:if="${key} != null" th:value="${key}"/>
+                            <input type="text" class="form-control" name="value" id="exampleFormControlInput1" placeholder="Pencarian Berdasarkan Nama"  th:if="${key} == null"/>
+                            <input type="text" class="form-control" name="value" id="exampleFormControlInput1" placeholder="Pencarian Berdasarkan Nama"  th:if="${key} != null" th:value="${key}"/>
                             <input type="hidden" name="mode" id="mode"/>
                             <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                         </div>

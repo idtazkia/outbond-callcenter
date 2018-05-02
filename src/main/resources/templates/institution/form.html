@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+
+<section layout:fragment="main" class="container">
+
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h5 class="border-bottom border-gray pb-2 mb-0">Prospect Form</h5>
+
+        <form role="form" th:object="${institution}" method="post">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Nama</label>
+                <input type="text" th:field="*{name}" name="name" class="form-control" id="exampleFormControlInput1" placeholder="Name.........">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Description</label>
+                <input type="text" th:field="*{description}" class="form-control" name="description" id="exampleFormControlInput1" placeholder="description.........">
+            </div>
+
+
+            <input class="btn btn-primary" type="submit" value="Simpan">
+            <a th:href="@{/institution/list}" class="btn btn-primary" role="button">
+                <span aria-hidden="true"></span>Batal
+            </a>
+        </form>
+    </div>
+</section>
 
 </body>
 </html>

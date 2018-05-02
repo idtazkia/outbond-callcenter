@@ -1,10 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" xmlns:sd="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<section layout:fragment="main" class="container">
 
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h5 class="border-bottom border-gray pb-2 mb-0">Institution List</h5>
+
+        <div class="media text-muted pt-3">
+
+
+            <table width="100%">
+                <tr>
+                    <td>
+                        <a th:href="@{/institution/form}" class="btn btn-primary" role="button" aria-pressed="true">Add</a>
+                    </td>
+                    <td align="right">
+                        <form method="get">
+                            <div class="input-group input-group-sm" style="width: 100%;">
+                                <input type="text" class="form-control" name="value" id="exampleFormControlInput1" placeholder="Pencarian Berdasarkan Nama"  th:if="${key} == null"/>
+                                <input type="text" class="form-control" name="value" id="exampleFormControlInput1" placeholder="Pencarian Berdasarkan Nama"  th:if="${key} != null" th:value="${key}"/>
+                                <input type="hidden" name="mode" id="mode"/>
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col" width="30px"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="institution,row : ${daftarInstitution.content}">
+                    <th th:text="${(row.index + 1) + (daftarInstitution.number * daftarInstitution.size)}">1</th>
+                    <td th:text="${institution.name}">Dofir</td>
+                    <td th:text="${institution.description}">SMAN 1 Bogor</td>
+                    <td align="center">
+                        <a href="#" class="btn btn-success btn-sm" th:href="@{/institution/form?id={id}(id=${institution.id})}" title="edit">Edit</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+
+        <div class="row">
+            <!-- <div class="col-sm-6">
+                <div sd:pagination-summary="">info</div>
+            </div> -->
+            <div class="col-sm-6">
+                <nav class="pull-right">
+                    <ul class="pagination" sd:pagination="full">
+                        <!-- Pagination created by SpringDataDialect, this content is just for mockup -->
+                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+</section>
 </body>
 </html>

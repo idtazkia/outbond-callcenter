@@ -10,13 +10,14 @@
 <section layout:fragment="main" class="container">
 
     <div class="my-3 p-3 bg-white rounded box-shadow">
-        <h3>Data User</h3>
+        <h5 class="border-bottom border-gray pb-2 mb-0">User List</h5>
 
+        <div class="media text-muted pt-3">
 
         <table width="100%">
             <tr>
                 <td>
-                    <a th:href="@{/user/form}" class="btn btn-primary" role="button" aria-pressed="true">Tambah</a>
+                    <a th:href="@{/user/form}" class="btn btn-primary" role="button" aria-pressed="true">Add</a>
                 </td>
                 <td align="right">
                     <form method="get">
@@ -30,6 +31,7 @@
                 </td>
             </tr>
         </table>
+        </div>
         <br>
         <div class="box-body table-responsive no-padding">
             <table class="table table-striped">

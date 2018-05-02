@@ -11,13 +11,15 @@
 
     <div class="my-3 p-3 bg-white rounded box-shadow">
 
-        <h3>Data Campaign</h3>
+        <h5 class="border-bottom border-gray pb-2 mb-0">Campaign List</h5>
+
+        <div class="media text-muted pt-3">
 
 
         <table width="100%">
             <tr>
                 <td>
-                    <a th:href="@{/campaign/form}" class="btn btn-primary" role="button" aria-pressed="true">Tambah</a>
+                    <a th:href="@{/campaign/form}" class="btn btn-primary" role="button" aria-pressed="true">Add</a>
                 </td>
                 <td align="right">
                     <form method="get">
@@ -31,6 +33,7 @@
                 </td>
             </tr>
         </table>
+        </div>
         <br>
         <div class="box-body table-responsive no-padding">
             <table class="table table-striped">
@@ -44,6 +47,7 @@
                     <th scope="col">Active</th>
                     <th scope="col" width="30px"></th>
                     <th scope="col" width="30px"></th>
+                    <th scope="col" width="30px"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,12 +58,16 @@
                     <td th:text="${campaign.startDate}">-</td>
                     <td th:text="${campaign.endDate}">-</td>
                     <td th:text="${campaign.active}">-</td>
-                    <td align="center">
+                    <td align="center" width="20px">
                         <a href="#" class="btn btn-success btn-sm" th:href="@{/campaign/form?id={id}(id=${campaign.id})}" title="edit">Edit</a>
                     </td>
 
-                    <td align="center">
-                        <a href="#" class="btn btn-success btn-sm" th:href="@{/campaign/prospect/form?id={id}(id=${campaign.id})}" title="edit">Prospect</a>
+                    <td align="center" width="20px">
+                        <a href="#" class="btn btn-warning btn-sm" th:href="@{/campaign/prospect/form?id={id}(id=${campaign.id})}" title="edit">Prospect</a>
+                    </td>
+
+                    <td align="center" width="20px">
+                        <a href="#" class="btn btn-primary btn-sm" th:href="@{/campaign/user/form?id={id}(id=${campaign.id})}" title="edit">User</a>
                     </td>
                 </tr>
                 </tbody>

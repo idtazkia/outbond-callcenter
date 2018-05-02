@@ -3,8 +3,10 @@ package id.ac.tazkia.callcenter.outbound.controller;
 
 import id.ac.tazkia.callcenter.outbound.dao.CampaignDao;
 import id.ac.tazkia.callcenter.outbound.dao.ProspectDao;
+import id.ac.tazkia.callcenter.outbound.dao.UserDao;
 import id.ac.tazkia.callcenter.outbound.entity.Campaign;
 import id.ac.tazkia.callcenter.outbound.entity.Prospect;
+import id.ac.tazkia.callcenter.outbound.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,6 +29,9 @@ public class CampaignController {
 
     @Autowired
     private ProspectDao prospectDao;
+
+    @Autowired
+    private UserDao userDao;
 
 
     @GetMapping("/campaign/list")
@@ -80,6 +85,33 @@ public class CampaignController {
             System.out.println("ID : "+p.getId());
         }
         campaign.setProspects(prospects);
+        campaignDao.save(campaign);
+
+        return "redirect:/campaign/list";
+    }
+
+
+    @ModelAttribute("daftarUser")
+    public Iterable<User> daftarUser(@PageableDefault(size = 10) Pageable pageable, @RequestParam(name="value",required = false) String value, Model model) {
+        if (value != null) {
+            model.addAttribute("key", value);
+            return userDao.findByUsername(value, pageable);
+        }else {
+            return userDao.findAll();
+        }
+    }
+
+    @GetMapping("/campaign/user/form")
+    public ModelMap displayAddUser(@PageableDefault(size = 10) Pageable pageable, @RequestParam(name = "id", required = false) String id) {
+        return new ModelMap().addAttribute("campaign", campaignDao.findById(id).get());
+    }
+
+    @PostMapping("/campaign/user/form")
+    public String prosesAddUser(@RequestParam("campaign") Campaign campaign, @RequestParam("users")Set<User> users) {
+        for (User u : users) {
+            System.out.println("ID : "+u.getId());
+        }
+        campaign.setUsers(users);
         campaignDao.save(campaign);
 
         return "redirect:/campaign/list";

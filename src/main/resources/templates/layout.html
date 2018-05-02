@@ -1,6 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,8 +17,8 @@
     <link th:href="@{/dist/css/select2.min.css}" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link href="/navbar-top-fixed.css" rel="stylesheet">
-    <link href="/offcanvas.css" rel="stylesheet">
+    <link th:href="@{/navbar-top-fixed.css}" rel="stylesheet">
+    <link th:href="@{/offcanvas.css}" rel="stylesheet">
 </head>
 
 <body>
@@ -29,29 +30,27 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item" sec:authorize="hasAuthority('CONFIGURE_SYSTEM')">
                 <a class="nav-link"th:href="@{/user/list}">User</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="hasAuthority('CONFIGURE_SYSTEM')">
                 <a class="nav-link" th:href="@{/institution/list}">Institution</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="hasAuthority('CONFIGURE_SYSTEM')">
                 <a class="nav-link" th:href="@{/prospect/list}">Prospect</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="hasAuthority('CONFIGURE_SYSTEM')">
                 <a class="nav-link" th:href="@{/campaign/list}">Campaign</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/asign/list}">Asign</a>
+            <li class="nav-item" sec:authorize="hasAuthority('SESI_TELEPON')">
+                <a class="nav-link" th:href="@{/sesi_telepon/form}">Session</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Sesi Telepon</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Laporan</a>
+            <li class="nav-item" sec:authorize="hasAuthority('CONFIGURE_SYSTEM')">
+                <a class="nav-link" th:href="@{/report/list}">Report</a>
             </li>
         </ul>
     </div>
+
 </nav>
 
 <main layout:fragment="main" class="container">

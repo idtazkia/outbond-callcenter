@@ -43,4 +43,13 @@ public class Campaign {
             inverseJoinColumns = @JoinColumn(name = "id_prospect")
     )
     private Set<Prospect> prospects = new HashSet<>();
+
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "campaign_user",
+            joinColumns = @JoinColumn(name = "id_campaign"),
+            inverseJoinColumns = @JoinColumn(name = "id_user")
+    )
+    private Set<User> users = new HashSet<>();
 }

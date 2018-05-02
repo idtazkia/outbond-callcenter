@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Telephone Session</title>
+</head>
+<body>
+
+<section layout:fragment="main" class="container">
+
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h5 class="border-bottom border-gray pb-2 mb-0">Telephone Session</h5>
+
+
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <th>Date</th>
+                    <td >:</td>
+                    <td ></td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td >:</td>
+                    <td ></td>
+                </tr>
+                <tr>
+                    <th>No Telephone</th>
+                    <td >:</td>
+                    <td ></td>
+                </tr>
+                <tr>
+                    <th>Parrent name</th>
+                    <td >:</td>
+                    <td ></td>
+                </tr>
+                <tr>
+                    <th>Result</th>
+                    <td >:</td>
+                    <td >
+                    <Table>
+                        <tr>
+                            <td>
+                                <input type="radio" name="result" value="nr">
+                             </td>
+                            <td>Tidak Diangkat</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="result" value="nr">
+                            </td>
+                            <td>Tidak Tersambung</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="result" value="nr">
+                            </td>
+                            <td>Nada Sibuk</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="result" value="nr">
+                            </td>
+                            <td>Tidak Berminat</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="result" value="nr">
+                            </td>
+                            <td>Nanti Telepon lagi</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="result" value="nr">
+                            </td>
+                            <td>Sedang Rapat</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="result" value="nr">
+                            </td>
+                            <td>Mau Daftar</td>
+                            <td></td>
+                        </tr>
+                    </Table>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Komentar</th>
+                    <td >:</td>
+                    <td >
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Folow Up</th>
+                    <td >:</td>
+                    <td >
+                        <input type="text" name="folowUp" class="form-control" id="exampleFormControlInput1" placeholder="Folow Up Date format (yyyy-MM-dd)............">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <input class="btn btn-primary" type="submit" value="Selesai">
+            <input class="btn btn-primary" type="submit" value="Next">
+            <input class="btn btn-primary" type="submit" value="Simpan">
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>
